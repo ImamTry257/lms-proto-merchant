@@ -4,7 +4,7 @@ syntax = "proto3";
 
 package merchant.v2;
 
-option go_package = "gitlab.com/bykarya-proto/proto/gen/go/merchant/v2;merchantpbv2";
+option go_package = "github.com/lms-proto-merchant/gen/go/merchant/v2;merchantpbv2";
 
 import "google/protobuf/timestamp.proto";
 
