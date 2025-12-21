@@ -552,7 +552,7 @@ const file_merchant_proto_rawDesc = "" +
 	"\x06Update\x12\x1c.merchant.v2.MerchantRequest\x1a#.merchant.v2.ActionMerchantResponse\x12M\n" +
 	"\aGetById\x12#.merchant.v2.GetMerchantByIdRequest\x1a\x1d.merchant.v2.MerchantResponse\x12Q\n" +
 	"\tGetByUuid\x12%.merchant.v2.GetMerchantByUuidRequest\x1a\x1d.merchant.v2.MerchantResponse\x12T\n" +
-	"\x06Delete\x12%.merchant.v2.GetMerchantByUuidRequest\x1a#.merchant.v2.ActionMerchantResponseB@Z>gitlab.com/bykarya-proto/proto/gen/go/merchant/v2;merchantpbv2b\x06proto3"
+	"\x06Delete\x12%.merchant.v2.GetMerchantByUuidRequest\x1a#.merchant.v2.ActionMerchantResponseBJZHgithub.com/ImamTry257/lms-proto-merchant/gen/go/merchant/v2;merchantpbv2b\x06proto3"
 
 var (
 	file_merchant_proto_rawDescOnce sync.Once
