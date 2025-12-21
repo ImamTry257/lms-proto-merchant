@@ -1,4 +1,4 @@
-module github.com:ImamTry257/lms-proto-merchant
+module github.com/ImamTry257/lms-proto-merchant
 
 go 1.24.1
 
