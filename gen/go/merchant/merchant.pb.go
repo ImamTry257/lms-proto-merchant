@@ -7,7 +7,7 @@
 // 	protoc        v6.33.1
 // source: merchant.proto
 
-package merchantpbv1
+package merchantpbv2
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -95,7 +95,7 @@ func (x *ListMerchantRequest) GetStatus() string {
 
 type GetMerchantByIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id_           string                 `protobuf:"bytes,1,opt,name=id_,json=id,proto3" json:"id_,omitempty"`
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -130,7 +130,51 @@ func (*GetMerchantByIdRequest) Descriptor() ([]byte, []int) {
 	return file_merchant_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetMerchantByIdRequest) GetId_() string {
+func (x *GetMerchantByIdRequest) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type GetMerchantByUuidRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id_           string                 `protobuf:"bytes,1,opt,name=id_,json=id,proto3" json:"id_,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetMerchantByUuidRequest) Reset() {
+	*x = GetMerchantByUuidRequest{}
+	mi := &file_merchant_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetMerchantByUuidRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetMerchantByUuidRequest) ProtoMessage() {}
+
+func (x *GetMerchantByUuidRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_merchant_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetMerchantByUuidRequest.ProtoReflect.Descriptor instead.
+func (*GetMerchantByUuidRequest) Descriptor() ([]byte, []int) {
+	return file_merchant_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetMerchantByUuidRequest) GetId_() string {
 	if x != nil {
 		return x.Id_
 	}
@@ -139,21 +183,21 @@ func (x *GetMerchantByIdRequest) GetId_() string {
 
 type MerchantRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Uuid          string                 `protobuf:"bytes,2,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Code          string                 `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`
-	Slug          string                 `protobuf:"bytes,5,opt,name=slug,proto3" json:"slug,omitempty"`
-	Address       string                 `protobuf:"bytes,6,opt,name=address,proto3" json:"address,omitempty"`
-	IsActive      int32                  `protobuf:"varint,7,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	Slug          string                 `protobuf:"bytes,4,opt,name=slug,proto3" json:"slug,omitempty"`
+	Address       string                 `protobuf:"bytes,5,opt,name=address,proto3" json:"address,omitempty"`
+	IsActive      int32                  `protobuf:"varint,6,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Id            int32                  `protobuf:"varint,8,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *MerchantRequest) Reset() {
 	*x = MerchantRequest{}
-	mi := &file_merchant_proto_msgTypes[2]
+	mi := &file_merchant_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -165,7 +209,7 @@ func (x *MerchantRequest) String() string {
 func (*MerchantRequest) ProtoMessage() {}
 
 func (x *MerchantRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_merchant_proto_msgTypes[2]
+	mi := &file_merchant_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -178,14 +222,7 @@ func (x *MerchantRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MerchantRequest.ProtoReflect.Descriptor instead.
 func (*MerchantRequest) Descriptor() ([]byte, []int) {
-	return file_merchant_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *MerchantRequest) GetId() int32 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
+	return file_merchant_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *MerchantRequest) GetUuid() string {
@@ -237,23 +274,30 @@ func (x *MerchantRequest) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *MerchantRequest) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
 type MerchantResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Uuid          string                 `protobuf:"bytes,2,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	Code          string                 `protobuf:"bytes,4,opt,name=code,proto3" json:"code,omitempty"`
-	Slug          string                 `protobuf:"bytes,5,opt,name=slug,proto3" json:"slug,omitempty"`
-	Address       string                 `protobuf:"bytes,6,opt,name=address,proto3" json:"address,omitempty"`
-	IsActive      int32                  `protobuf:"varint,7,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	Slug          string                 `protobuf:"bytes,4,opt,name=slug,proto3" json:"slug,omitempty"`
+	Address       string                 `protobuf:"bytes,5,opt,name=address,proto3" json:"address,omitempty"`
+	IsActive      int32                  `protobuf:"varint,6,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Id            int32                  `protobuf:"varint,8,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *MerchantResponse) Reset() {
 	*x = MerchantResponse{}
-	mi := &file_merchant_proto_msgTypes[3]
+	mi := &file_merchant_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -265,7 +309,7 @@ func (x *MerchantResponse) String() string {
 func (*MerchantResponse) ProtoMessage() {}
 
 func (x *MerchantResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_merchant_proto_msgTypes[3]
+	mi := &file_merchant_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -278,14 +322,7 @@ func (x *MerchantResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MerchantResponse.ProtoReflect.Descriptor instead.
 func (*MerchantResponse) Descriptor() ([]byte, []int) {
-	return file_merchant_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *MerchantResponse) GetId() int32 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
+	return file_merchant_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *MerchantResponse) GetUuid() string {
@@ -337,6 +374,13 @@ func (x *MerchantResponse) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *MerchantResponse) GetId() int32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
 type ListMerchantResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Data          []*MerchantResponse    `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
@@ -350,7 +394,7 @@ type ListMerchantResponse struct {
 
 func (x *ListMerchantResponse) Reset() {
 	*x = ListMerchantResponse{}
-	mi := &file_merchant_proto_msgTypes[4]
+	mi := &file_merchant_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -362,7 +406,7 @@ func (x *ListMerchantResponse) String() string {
 func (*ListMerchantResponse) ProtoMessage() {}
 
 func (x *ListMerchantResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_merchant_proto_msgTypes[4]
+	mi := &file_merchant_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -375,7 +419,7 @@ func (x *ListMerchantResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListMerchantResponse.ProtoReflect.Descriptor instead.
 func (*ListMerchantResponse) Descriptor() ([]byte, []int) {
-	return file_merchant_proto_rawDescGZIP(), []int{4}
+	return file_merchant_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListMerchantResponse) GetData() []*MerchantResponse {
@@ -413,51 +457,102 @@ func (x *ListMerchantResponse) GetTotalPages() int32 {
 	return 0
 }
 
+type ActionMerchantResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	IsSuccess     bool                   `protobuf:"varint,1,opt,name=is_success,json=isSuccess,proto3" json:"is_success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ActionMerchantResponse) Reset() {
+	*x = ActionMerchantResponse{}
+	mi := &file_merchant_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ActionMerchantResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ActionMerchantResponse) ProtoMessage() {}
+
+func (x *ActionMerchantResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_merchant_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ActionMerchantResponse.ProtoReflect.Descriptor instead.
+func (*ActionMerchantResponse) Descriptor() ([]byte, []int) {
+	return file_merchant_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ActionMerchantResponse) GetIsSuccess() bool {
+	if x != nil {
+		return x.IsSuccess
+	}
+	return false
+}
+
 var File_merchant_proto protoreflect.FileDescriptor
 
 const file_merchant_proto_rawDesc = "" +
 	"\n" +
-	"\x0emerchant.proto\x12\vmerchant.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"m\n" +
+	"\x0emerchant.proto\x12\vmerchant.v2\x1a\x1fgoogle/protobuf/timestamp.proto\"m\n" +
 	"\x13ListMerchantRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x12\n" +
 	"\x04size\x18\x02 \x01(\x05R\x04size\x12\x16\n" +
 	"\x06search\x18\x03 \x01(\tR\x06search\x12\x16\n" +
-	"\x06status\x18\x04 \x01(\tR\x06status\")\n" +
-	"\x16GetMerchantByIdRequest\x12\x0f\n" +
+	"\x06status\x18\x04 \x01(\tR\x06status\"(\n" +
+	"\x16GetMerchantByIdRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"+\n" +
+	"\x18GetMerchantByUuidRequest\x12\x0f\n" +
 	"\x03id_\x18\x01 \x01(\tR\x02id\"\xe3\x01\n" +
-	"\x0fMerchantRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
-	"\x04uuid\x18\x02 \x01(\tR\x04uuid\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\x12\x12\n" +
-	"\x04code\x18\x04 \x01(\tR\x04code\x12\x12\n" +
-	"\x04slug\x18\x05 \x01(\tR\x04slug\x12\x18\n" +
-	"\aaddress\x18\x06 \x01(\tR\aaddress\x12\x1b\n" +
-	"\tis_active\x18\a \x01(\x05R\bisActive\x129\n" +
+	"\x0fMerchantRequest\x12\x12\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
+	"\x04code\x18\x03 \x01(\tR\x04code\x12\x12\n" +
+	"\x04slug\x18\x04 \x01(\tR\x04slug\x12\x18\n" +
+	"\aaddress\x18\x05 \x01(\tR\aaddress\x12\x1b\n" +
+	"\tis_active\x18\x06 \x01(\x05R\bisActive\x129\n" +
 	"\n" +
-	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xe4\x01\n" +
-	"\x10MerchantResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
-	"\x04uuid\x18\x02 \x01(\tR\x04uuid\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\x12\x12\n" +
-	"\x04code\x18\x04 \x01(\tR\x04code\x12\x12\n" +
-	"\x04slug\x18\x05 \x01(\tR\x04slug\x12\x18\n" +
-	"\aaddress\x18\x06 \x01(\tR\aaddress\x12\x1b\n" +
-	"\tis_active\x18\a \x01(\x05R\bisActive\x129\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12\x0e\n" +
+	"\x02id\x18\b \x01(\x05R\x02id\"\xe4\x01\n" +
+	"\x10MerchantResponse\x12\x12\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
+	"\x04code\x18\x03 \x01(\tR\x04code\x12\x12\n" +
+	"\x04slug\x18\x04 \x01(\tR\x04slug\x12\x18\n" +
+	"\aaddress\x18\x05 \x01(\tR\aaddress\x12\x1b\n" +
+	"\tis_active\x18\x06 \x01(\x05R\bisActive\x129\n" +
 	"\n" +
-	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xb3\x01\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12\x0e\n" +
+	"\x02id\x18\b \x01(\x05R\x02id\"\xb3\x01\n" +
 	"\x14ListMerchantResponse\x121\n" +
-	"\x04data\x18\x01 \x03(\v2\x1d.merchant.v1.MerchantResponseR\x04data\x12\x12\n" +
+	"\x04data\x18\x01 \x03(\v2\x1d.merchant.v2.MerchantResponseR\x04data\x12\x12\n" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x12\n" +
 	"\x04size\x18\x03 \x01(\x05R\x04size\x12\x1f\n" +
 	"\vtotal_items\x18\x04 \x01(\x05R\n" +
 	"totalItems\x12\x1f\n" +
 	"\vtotal_pages\x18\x05 \x01(\x05R\n" +
-	"totalPages2\xbd\x02\n" +
+	"totalPages\"7\n" +
+	"\x16ActionMerchantResponse\x12\x1d\n" +
+	"\n" +
+	"is_success\x18\x01 \x01(\bR\tisSuccess2\xf2\x03\n" +
 	"\x0fMerchantService\x12M\n" +
-	"\x06GetAll\x12 .merchant.v1.ListMerchantRequest\x1a!.merchant.v1.ListMerchantResponse\x12E\n" +
-	"\x06Create\x12\x1c.merchant.v1.MerchantRequest\x1a\x1d.merchant.v1.MerchantResponse\x12E\n" +
-	"\x06Update\x12\x1c.merchant.v1.MerchantRequest\x1a\x1d.merchant.v1.MerchantResponse\x12M\n" +
-	"\aGetById\x12#.merchant.v1.GetMerchantByIdRequest\x1a\x1d.merchant.v1.MerchantResponseB@Z>gitlab.com/bykarya-proto/proto/gen/go/merchant/v1;merchantpbv1b\x06proto3"
+	"\x06GetAll\x12 .merchant.v2.ListMerchantRequest\x1a!.merchant.v2.ListMerchantResponse\x12K\n" +
+	"\x06Create\x12\x1c.merchant.v2.MerchantRequest\x1a#.merchant.v2.ActionMerchantResponse\x12K\n" +
+	"\x06Update\x12\x1c.merchant.v2.MerchantRequest\x1a#.merchant.v2.ActionMerchantResponse\x12M\n" +
+	"\aGetById\x12#.merchant.v2.GetMerchantByIdRequest\x1a\x1d.merchant.v2.MerchantResponse\x12Q\n" +
+	"\tGetByUuid\x12%.merchant.v2.GetMerchantByUuidRequest\x1a\x1d.merchant.v2.MerchantResponse\x12T\n" +
+	"\x06Delete\x12%.merchant.v2.GetMerchantByUuidRequest\x1a#.merchant.v2.ActionMerchantResponseBGZEgithub.com/ImamTry257/lms-proto-merchant/gen/go/merchant;merchantpbv2b\x06proto3"
 
 var (
 	file_merchant_proto_rawDescOnce sync.Once
@@ -471,29 +566,35 @@ func file_merchant_proto_rawDescGZIP() []byte {
 	return file_merchant_proto_rawDescData
 }
 
-var file_merchant_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_merchant_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_merchant_proto_goTypes = []any{
-	(*ListMerchantRequest)(nil),    // 0: merchant.v1.ListMerchantRequest
-	(*GetMerchantByIdRequest)(nil), // 1: merchant.v1.GetMerchantByIdRequest
-	(*MerchantRequest)(nil),        // 2: merchant.v1.MerchantRequest
-	(*MerchantResponse)(nil),       // 3: merchant.v1.MerchantResponse
-	(*ListMerchantResponse)(nil),   // 4: merchant.v1.ListMerchantResponse
-	(*timestamppb.Timestamp)(nil),  // 5: google.protobuf.Timestamp
+	(*ListMerchantRequest)(nil),      // 0: merchant.v2.ListMerchantRequest
+	(*GetMerchantByIdRequest)(nil),   // 1: merchant.v2.GetMerchantByIdRequest
+	(*GetMerchantByUuidRequest)(nil), // 2: merchant.v2.GetMerchantByUuidRequest
+	(*MerchantRequest)(nil),          // 3: merchant.v2.MerchantRequest
+	(*MerchantResponse)(nil),         // 4: merchant.v2.MerchantResponse
+	(*ListMerchantResponse)(nil),     // 5: merchant.v2.ListMerchantResponse
+	(*ActionMerchantResponse)(nil),   // 6: merchant.v2.ActionMerchantResponse
+	(*timestamppb.Timestamp)(nil),    // 7: google.protobuf.Timestamp
 }
 var file_merchant_proto_depIdxs = []int32{
-	5, // 0: merchant.v1.MerchantRequest.created_at:type_name -> google.protobuf.Timestamp
-	5, // 1: merchant.v1.MerchantResponse.created_at:type_name -> google.protobuf.Timestamp
-	3, // 2: merchant.v1.ListMerchantResponse.data:type_name -> merchant.v1.MerchantResponse
-	0, // 3: merchant.v1.MerchantService.GetAll:input_type -> merchant.v1.ListMerchantRequest
-	2, // 4: merchant.v1.MerchantService.Create:input_type -> merchant.v1.MerchantRequest
-	2, // 5: merchant.v1.MerchantService.Update:input_type -> merchant.v1.MerchantRequest
-	1, // 6: merchant.v1.MerchantService.GetById:input_type -> merchant.v1.GetMerchantByIdRequest
-	4, // 7: merchant.v1.MerchantService.GetAll:output_type -> merchant.v1.ListMerchantResponse
-	3, // 8: merchant.v1.MerchantService.Create:output_type -> merchant.v1.MerchantResponse
-	3, // 9: merchant.v1.MerchantService.Update:output_type -> merchant.v1.MerchantResponse
-	3, // 10: merchant.v1.MerchantService.GetById:output_type -> merchant.v1.MerchantResponse
-	7, // [7:11] is the sub-list for method output_type
-	3, // [3:7] is the sub-list for method input_type
+	7, // 0: merchant.v2.MerchantRequest.created_at:type_name -> google.protobuf.Timestamp
+	7, // 1: merchant.v2.MerchantResponse.created_at:type_name -> google.protobuf.Timestamp
+	4, // 2: merchant.v2.ListMerchantResponse.data:type_name -> merchant.v2.MerchantResponse
+	0, // 3: merchant.v2.MerchantService.GetAll:input_type -> merchant.v2.ListMerchantRequest
+	3, // 4: merchant.v2.MerchantService.Create:input_type -> merchant.v2.MerchantRequest
+	3, // 5: merchant.v2.MerchantService.Update:input_type -> merchant.v2.MerchantRequest
+	1, // 6: merchant.v2.MerchantService.GetById:input_type -> merchant.v2.GetMerchantByIdRequest
+	2, // 7: merchant.v2.MerchantService.GetByUuid:input_type -> merchant.v2.GetMerchantByUuidRequest
+	2, // 8: merchant.v2.MerchantService.Delete:input_type -> merchant.v2.GetMerchantByUuidRequest
+	5, // 9: merchant.v2.MerchantService.GetAll:output_type -> merchant.v2.ListMerchantResponse
+	6, // 10: merchant.v2.MerchantService.Create:output_type -> merchant.v2.ActionMerchantResponse
+	6, // 11: merchant.v2.MerchantService.Update:output_type -> merchant.v2.ActionMerchantResponse
+	4, // 12: merchant.v2.MerchantService.GetById:output_type -> merchant.v2.MerchantResponse
+	4, // 13: merchant.v2.MerchantService.GetByUuid:output_type -> merchant.v2.MerchantResponse
+	6, // 14: merchant.v2.MerchantService.Delete:output_type -> merchant.v2.ActionMerchantResponse
+	9, // [9:15] is the sub-list for method output_type
+	3, // [3:9] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
 	3, // [3:3] is the sub-list for extension extendee
 	0, // [0:3] is the sub-list for field type_name
@@ -510,7 +611,7 @@ func file_merchant_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_merchant_proto_rawDesc), len(file_merchant_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

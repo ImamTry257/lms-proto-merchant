@@ -1,0 +1,67 @@
+// =================
+// merchant.proto
+syntax = "proto3";
+
+package merchant.v2;
+
+option go_package = "github.com/ImamTry257/lms-proto-merchant/gen/go/merchant;merchantpbv2";
+
+import "google/protobuf/timestamp.proto";
+
+message ListMerchantRequest {
+    int32 page = 1;
+    int32 size = 2;
+    string search = 3;
+    string status = 4;
+}
+
+message GetMerchantByIdRequest {
+    int32 id = 1;
+}
+
+message GetMerchantByUuidRequest {
+    string id_ = 1;
+}
+
+message MerchantRequest {
+    string uuid = 1;
+    string name = 2;
+    string code = 3;
+    string slug = 4;
+    string address = 5;
+    int32 is_active = 6;
+    google.protobuf.Timestamp created_at = 7;
+    int32 id = 8;
+}
+
+message MerchantResponse {
+    string uuid = 1;
+    string name = 2;
+    string code = 3;
+    string slug = 4;
+    string address = 5;
+    int32 is_active = 6;
+    google.protobuf.Timestamp created_at = 7;
+    int32 id = 8;
+}
+
+message ListMerchantResponse {
+    repeated MerchantResponse data = 1;
+    int32 page = 2;
+    int32 size = 3;
+    int32 total_items = 4;
+    int32 total_pages = 5;
+}
+
+message ActionMerchantResponse {
+    bool is_success = 1;
+}
+
+service MerchantService {
+    rpc GetAll(ListMerchantRequest) returns (ListMerchantResponse);
+    rpc Create(MerchantRequest) returns (ActionMerchantResponse);
+    rpc Update(MerchantRequest) returns (ActionMerchantResponse);
+    rpc GetById(GetMerchantByIdRequest) returns (MerchantResponse);
+    rpc GetByUuid(GetMerchantByUuidRequest) returns (MerchantResponse);
+    rpc Delete(GetMerchantByUuidRequest) returns (ActionMerchantResponse);
+}
