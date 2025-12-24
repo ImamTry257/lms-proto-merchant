@@ -32,6 +32,10 @@ message MerchantRequest {
     int32 is_active = 6;
     google.protobuf.Timestamp created_at = 7;
     int32 id = 8;
+    string owner_name = 9;
+    string owner_phone_number = 10;
+    string owner_email = 11;
+    string owner_address = 12;
 }
 
 message MerchantResponse {
@@ -43,6 +47,10 @@ message MerchantResponse {
     int32 is_active = 6;
     google.protobuf.Timestamp created_at = 7;
     int32 id = 8;
+    string owner_name = 9;
+    string owner_phone_number = 10;
+    string owner_email = 11;
+    string owner_address = 12;
 }
 
 message ListMerchantResponse {
