@@ -445,7 +445,7 @@ func (x *MerchantResponse) GetOwnerAddress() string {
 	return ""
 }
 
-type MerchantNameResponse struct {
+type ListMerchantNameResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
@@ -453,20 +453,20 @@ type MerchantNameResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *MerchantNameResponse) Reset() {
-	*x = MerchantNameResponse{}
+func (x *ListMerchantNameResponse) Reset() {
+	*x = ListMerchantNameResponse{}
 	mi := &file_merchant_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *MerchantNameResponse) String() string {
+func (x *ListMerchantNameResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MerchantNameResponse) ProtoMessage() {}
+func (*ListMerchantNameResponse) ProtoMessage() {}
 
-func (x *MerchantNameResponse) ProtoReflect() protoreflect.Message {
+func (x *ListMerchantNameResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_merchant_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -478,19 +478,19 @@ func (x *MerchantNameResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use MerchantNameResponse.ProtoReflect.Descriptor instead.
-func (*MerchantNameResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListMerchantNameResponse.ProtoReflect.Descriptor instead.
+func (*ListMerchantNameResponse) Descriptor() ([]byte, []int) {
 	return file_merchant_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *MerchantNameResponse) GetUuid() string {
+func (x *ListMerchantNameResponse) GetUuid() string {
 	if x != nil {
 		return x.Uuid
 	}
 	return ""
 }
 
-func (x *MerchantNameResponse) GetName() string {
+func (x *ListMerchantNameResponse) GetName() string {
 	if x != nil {
 		return x.Name
 	}
@@ -664,8 +664,8 @@ const file_merchant_proto_rawDesc = "" +
 	" \x01(\tR\x10ownerPhoneNumber\x12\x1f\n" +
 	"\vowner_email\x18\v \x01(\tR\n" +
 	"ownerEmail\x12#\n" +
-	"\rowner_address\x18\f \x01(\tR\fownerAddress\">\n" +
-	"\x14MerchantNameResponse\x12\x12\n" +
+	"\rowner_address\x18\f \x01(\tR\fownerAddress\"B\n" +
+	"\x18ListMerchantNameResponse\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\"\xb3\x01\n" +
 	"\x14ListMerchantResponse\x121\n" +
@@ -678,9 +678,10 @@ const file_merchant_proto_rawDesc = "" +
 	"totalPages\"7\n" +
 	"\x16ActionMerchantResponse\x12\x1d\n" +
 	"\n" +
-	"is_success\x18\x01 \x01(\bR\tisSuccess2\xf2\x03\n" +
+	"is_success\x18\x01 \x01(\bR\tisSuccess2\xd1\x04\n" +
 	"\x0fMerchantService\x12M\n" +
-	"\x06GetAll\x12 .merchant.v2.ListMerchantRequest\x1a!.merchant.v2.ListMerchantResponse\x12K\n" +
+	"\x06GetAll\x12 .merchant.v2.ListMerchantRequest\x1a!.merchant.v2.ListMerchantResponse\x12]\n" +
+	"\x12GetAllMerchantName\x12 .merchant.v2.ListMerchantRequest\x1a%.merchant.v2.ListMerchantNameResponse\x12K\n" +
 	"\x06Create\x12\x1c.merchant.v2.MerchantRequest\x1a#.merchant.v2.ActionMerchantResponse\x12K\n" +
 	"\x06Update\x12\x1c.merchant.v2.MerchantRequest\x1a#.merchant.v2.ActionMerchantResponse\x12M\n" +
 	"\aGetById\x12#.merchant.v2.GetMerchantByIdRequest\x1a\x1d.merchant.v2.MerchantResponse\x12Q\n" +
@@ -706,32 +707,34 @@ var file_merchant_proto_goTypes = []any{
 	(*GetMerchantByUuidRequest)(nil), // 2: merchant.v2.GetMerchantByUuidRequest
 	(*MerchantRequest)(nil),          // 3: merchant.v2.MerchantRequest
 	(*MerchantResponse)(nil),         // 4: merchant.v2.MerchantResponse
-	(*MerchantNameResponse)(nil),     // 5: merchant.v2.MerchantNameResponse
+	(*ListMerchantNameResponse)(nil), // 5: merchant.v2.ListMerchantNameResponse
 	(*ListMerchantResponse)(nil),     // 6: merchant.v2.ListMerchantResponse
 	(*ActionMerchantResponse)(nil),   // 7: merchant.v2.ActionMerchantResponse
 	(*timestamppb.Timestamp)(nil),    // 8: google.protobuf.Timestamp
 }
 var file_merchant_proto_depIdxs = []int32{
-	8, // 0: merchant.v2.MerchantRequest.created_at:type_name -> google.protobuf.Timestamp
-	8, // 1: merchant.v2.MerchantResponse.created_at:type_name -> google.protobuf.Timestamp
-	4, // 2: merchant.v2.ListMerchantResponse.data:type_name -> merchant.v2.MerchantResponse
-	0, // 3: merchant.v2.MerchantService.GetAll:input_type -> merchant.v2.ListMerchantRequest
-	3, // 4: merchant.v2.MerchantService.Create:input_type -> merchant.v2.MerchantRequest
-	3, // 5: merchant.v2.MerchantService.Update:input_type -> merchant.v2.MerchantRequest
-	1, // 6: merchant.v2.MerchantService.GetById:input_type -> merchant.v2.GetMerchantByIdRequest
-	2, // 7: merchant.v2.MerchantService.GetByUuid:input_type -> merchant.v2.GetMerchantByUuidRequest
-	2, // 8: merchant.v2.MerchantService.Delete:input_type -> merchant.v2.GetMerchantByUuidRequest
-	6, // 9: merchant.v2.MerchantService.GetAll:output_type -> merchant.v2.ListMerchantResponse
-	7, // 10: merchant.v2.MerchantService.Create:output_type -> merchant.v2.ActionMerchantResponse
-	7, // 11: merchant.v2.MerchantService.Update:output_type -> merchant.v2.ActionMerchantResponse
-	4, // 12: merchant.v2.MerchantService.GetById:output_type -> merchant.v2.MerchantResponse
-	4, // 13: merchant.v2.MerchantService.GetByUuid:output_type -> merchant.v2.MerchantResponse
-	7, // 14: merchant.v2.MerchantService.Delete:output_type -> merchant.v2.ActionMerchantResponse
-	9, // [9:15] is the sub-list for method output_type
-	3, // [3:9] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	8,  // 0: merchant.v2.MerchantRequest.created_at:type_name -> google.protobuf.Timestamp
+	8,  // 1: merchant.v2.MerchantResponse.created_at:type_name -> google.protobuf.Timestamp
+	4,  // 2: merchant.v2.ListMerchantResponse.data:type_name -> merchant.v2.MerchantResponse
+	0,  // 3: merchant.v2.MerchantService.GetAll:input_type -> merchant.v2.ListMerchantRequest
+	0,  // 4: merchant.v2.MerchantService.GetAllMerchantName:input_type -> merchant.v2.ListMerchantRequest
+	3,  // 5: merchant.v2.MerchantService.Create:input_type -> merchant.v2.MerchantRequest
+	3,  // 6: merchant.v2.MerchantService.Update:input_type -> merchant.v2.MerchantRequest
+	1,  // 7: merchant.v2.MerchantService.GetById:input_type -> merchant.v2.GetMerchantByIdRequest
+	2,  // 8: merchant.v2.MerchantService.GetByUuid:input_type -> merchant.v2.GetMerchantByUuidRequest
+	2,  // 9: merchant.v2.MerchantService.Delete:input_type -> merchant.v2.GetMerchantByUuidRequest
+	6,  // 10: merchant.v2.MerchantService.GetAll:output_type -> merchant.v2.ListMerchantResponse
+	5,  // 11: merchant.v2.MerchantService.GetAllMerchantName:output_type -> merchant.v2.ListMerchantNameResponse
+	7,  // 12: merchant.v2.MerchantService.Create:output_type -> merchant.v2.ActionMerchantResponse
+	7,  // 13: merchant.v2.MerchantService.Update:output_type -> merchant.v2.ActionMerchantResponse
+	4,  // 14: merchant.v2.MerchantService.GetById:output_type -> merchant.v2.MerchantResponse
+	4,  // 15: merchant.v2.MerchantService.GetByUuid:output_type -> merchant.v2.MerchantResponse
+	7,  // 16: merchant.v2.MerchantService.Delete:output_type -> merchant.v2.ActionMerchantResponse
+	10, // [10:17] is the sub-list for method output_type
+	3,  // [3:10] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_merchant_proto_init() }
