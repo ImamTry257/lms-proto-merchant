@@ -53,6 +53,11 @@ message MerchantResponse {
     string owner_address = 12;
 }
 
+message MerchantNameResponse {
+    string uuid = 1;
+    string name = 2;
+}
+
 message ListMerchantResponse {
     repeated MerchantResponse data = 1;
     int32 page = 2;
