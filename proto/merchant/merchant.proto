@@ -70,7 +70,33 @@ message ActionMerchantResponse {
     bool is_success = 1;
 }
 
+message GetMerchantPICByUuidRequest {
+    string id_ = 1;
+}
+
+message MerchantPICRequest {
+    int32 id = 1;
+    string uuid = 2;
+    string merchant_id = 3;
+    string owner_name = 4;
+    string owner_phone_number = 5;
+    string owner_email = 6;
+    string owner_address = 7;
+}
+
+message MerchantPICResponse {
+    int32 id = 1;
+    string uuid = 2;
+    string merchant_id = 3;
+    string owner_name = 4;
+    string owner_phone_number = 5;
+    string owner_email = 6;
+    string owner_address = 7;
+    google.protobuf.Timestamp created_at = 8;
+}
+
 service MerchantService {
+    // Merchant
     rpc GetAll(ListMerchantRequest) returns (ListMerchantResponse);
     rpc GetAllMerchantName(ListMerchantRequest) returns (ListMerchantNameResponse);
     rpc Create(MerchantRequest) returns (ActionMerchantResponse);
@@ -78,4 +104,9 @@ service MerchantService {
     rpc GetById(GetMerchantByIdRequest) returns (MerchantResponse);
     rpc GetByUuid(GetMerchantByUuidRequest) returns (MerchantResponse);
     rpc Delete(GetMerchantByUuidRequest) returns (ActionMerchantResponse);
+
+    // Merchant PIC
+    rpc CreatePIC(MerchantPICRequest) returns (ActionMerchantResponse);
+    rpc UpdatePIC(MerchantPICRequest) returns (ActionMerchantResponse);
+    rpc GetPICByUuid(GetMerchantPICByUuidRequest) returns (MerchantPICResponse);
 }
