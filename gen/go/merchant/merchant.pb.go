@@ -940,7 +940,7 @@ const file_merchant_proto_rawDesc = "" +
 	"ownerEmail\x12#\n" +
 	"\rowner_address\x18\a \x01(\tR\fownerAddress\x129\n" +
 	"\n" +
-	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt2\xd3\x06\n" +
+	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt2\xaf\a\n" +
 	"\x0fMerchantService\x12M\n" +
 	"\x06GetAll\x12 .merchant.v2.ListMerchantRequest\x1a!.merchant.v2.ListMerchantResponse\x12]\n" +
 	"\x12GetAllMerchantName\x12 .merchant.v2.ListMerchantRequest\x1a%.merchant.v2.ListMerchantNameResponse\x12K\n" +
@@ -951,6 +951,7 @@ const file_merchant_proto_rawDesc = "" +
 	"\x06Delete\x12%.merchant.v2.GetMerchantByUuidRequest\x1a#.merchant.v2.ActionMerchantResponse\x12Q\n" +
 	"\tCreatePIC\x12\x1f.merchant.v2.MerchantPICRequest\x1a#.merchant.v2.ActionMerchantResponse\x12Q\n" +
 	"\tUpdatePIC\x12\x1f.merchant.v2.MerchantPICRequest\x1a#.merchant.v2.ActionMerchantResponse\x12Z\n" +
+	"\tDeletePIC\x12(.merchant.v2.GetMerchantPICByUuidRequest\x1a#.merchant.v2.ActionMerchantResponse\x12Z\n" +
 	"\fGetPICByUuid\x12(.merchant.v2.GetMerchantPICByUuidRequest\x1a .merchant.v2.MerchantPICResponseBGZEgithub.com/ImamTry257/lms-proto-merchant/gen/go/merchant;merchantpbv2b\x06proto3"
 
 var (
@@ -994,19 +995,21 @@ var file_merchant_proto_depIdxs = []int32{
 	2,  // 10: merchant.v2.MerchantService.Delete:input_type -> merchant.v2.GetMerchantByUuidRequest
 	9,  // 11: merchant.v2.MerchantService.CreatePIC:input_type -> merchant.v2.MerchantPICRequest
 	9,  // 12: merchant.v2.MerchantService.UpdatePIC:input_type -> merchant.v2.MerchantPICRequest
-	8,  // 13: merchant.v2.MerchantService.GetPICByUuid:input_type -> merchant.v2.GetMerchantPICByUuidRequest
-	6,  // 14: merchant.v2.MerchantService.GetAll:output_type -> merchant.v2.ListMerchantResponse
-	5,  // 15: merchant.v2.MerchantService.GetAllMerchantName:output_type -> merchant.v2.ListMerchantNameResponse
-	7,  // 16: merchant.v2.MerchantService.Create:output_type -> merchant.v2.ActionMerchantResponse
-	7,  // 17: merchant.v2.MerchantService.Update:output_type -> merchant.v2.ActionMerchantResponse
-	4,  // 18: merchant.v2.MerchantService.GetById:output_type -> merchant.v2.MerchantResponse
-	4,  // 19: merchant.v2.MerchantService.GetByUuid:output_type -> merchant.v2.MerchantResponse
-	7,  // 20: merchant.v2.MerchantService.Delete:output_type -> merchant.v2.ActionMerchantResponse
-	7,  // 21: merchant.v2.MerchantService.CreatePIC:output_type -> merchant.v2.ActionMerchantResponse
-	7,  // 22: merchant.v2.MerchantService.UpdatePIC:output_type -> merchant.v2.ActionMerchantResponse
-	10, // 23: merchant.v2.MerchantService.GetPICByUuid:output_type -> merchant.v2.MerchantPICResponse
-	14, // [14:24] is the sub-list for method output_type
-	4,  // [4:14] is the sub-list for method input_type
+	8,  // 13: merchant.v2.MerchantService.DeletePIC:input_type -> merchant.v2.GetMerchantPICByUuidRequest
+	8,  // 14: merchant.v2.MerchantService.GetPICByUuid:input_type -> merchant.v2.GetMerchantPICByUuidRequest
+	6,  // 15: merchant.v2.MerchantService.GetAll:output_type -> merchant.v2.ListMerchantResponse
+	5,  // 16: merchant.v2.MerchantService.GetAllMerchantName:output_type -> merchant.v2.ListMerchantNameResponse
+	7,  // 17: merchant.v2.MerchantService.Create:output_type -> merchant.v2.ActionMerchantResponse
+	7,  // 18: merchant.v2.MerchantService.Update:output_type -> merchant.v2.ActionMerchantResponse
+	4,  // 19: merchant.v2.MerchantService.GetById:output_type -> merchant.v2.MerchantResponse
+	4,  // 20: merchant.v2.MerchantService.GetByUuid:output_type -> merchant.v2.MerchantResponse
+	7,  // 21: merchant.v2.MerchantService.Delete:output_type -> merchant.v2.ActionMerchantResponse
+	7,  // 22: merchant.v2.MerchantService.CreatePIC:output_type -> merchant.v2.ActionMerchantResponse
+	7,  // 23: merchant.v2.MerchantService.UpdatePIC:output_type -> merchant.v2.ActionMerchantResponse
+	7,  // 24: merchant.v2.MerchantService.DeletePIC:output_type -> merchant.v2.ActionMerchantResponse
+	10, // 25: merchant.v2.MerchantService.GetPICByUuid:output_type -> merchant.v2.MerchantPICResponse
+	15, // [15:26] is the sub-list for method output_type
+	4,  // [4:15] is the sub-list for method input_type
 	4,  // [4:4] is the sub-list for extension type_name
 	4,  // [4:4] is the sub-list for extension extendee
 	0,  // [0:4] is the sub-list for field type_name

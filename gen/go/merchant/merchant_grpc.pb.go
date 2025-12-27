@@ -31,6 +31,7 @@ const (
 	MerchantService_Delete_FullMethodName             = "/merchant.v2.MerchantService/Delete"
 	MerchantService_CreatePIC_FullMethodName          = "/merchant.v2.MerchantService/CreatePIC"
 	MerchantService_UpdatePIC_FullMethodName          = "/merchant.v2.MerchantService/UpdatePIC"
+	MerchantService_DeletePIC_FullMethodName          = "/merchant.v2.MerchantService/DeletePIC"
 	MerchantService_GetPICByUuid_FullMethodName       = "/merchant.v2.MerchantService/GetPICByUuid"
 )
 
@@ -49,6 +50,7 @@ type MerchantServiceClient interface {
 	// Merchant PIC
 	CreatePIC(ctx context.Context, in *MerchantPICRequest, opts ...grpc.CallOption) (*ActionMerchantResponse, error)
 	UpdatePIC(ctx context.Context, in *MerchantPICRequest, opts ...grpc.CallOption) (*ActionMerchantResponse, error)
+	DeletePIC(ctx context.Context, in *GetMerchantPICByUuidRequest, opts ...grpc.CallOption) (*ActionMerchantResponse, error)
 	GetPICByUuid(ctx context.Context, in *GetMerchantPICByUuidRequest, opts ...grpc.CallOption) (*MerchantPICResponse, error)
 }
 
@@ -150,6 +152,16 @@ func (c *merchantServiceClient) UpdatePIC(ctx context.Context, in *MerchantPICRe
 	return out, nil
 }
 
+func (c *merchantServiceClient) DeletePIC(ctx context.Context, in *GetMerchantPICByUuidRequest, opts ...grpc.CallOption) (*ActionMerchantResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ActionMerchantResponse)
+	err := c.cc.Invoke(ctx, MerchantService_DeletePIC_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *merchantServiceClient) GetPICByUuid(ctx context.Context, in *GetMerchantPICByUuidRequest, opts ...grpc.CallOption) (*MerchantPICResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(MerchantPICResponse)
@@ -175,6 +187,7 @@ type MerchantServiceServer interface {
 	// Merchant PIC
 	CreatePIC(context.Context, *MerchantPICRequest) (*ActionMerchantResponse, error)
 	UpdatePIC(context.Context, *MerchantPICRequest) (*ActionMerchantResponse, error)
+	DeletePIC(context.Context, *GetMerchantPICByUuidRequest) (*ActionMerchantResponse, error)
 	GetPICByUuid(context.Context, *GetMerchantPICByUuidRequest) (*MerchantPICResponse, error)
 	mustEmbedUnimplementedMerchantServiceServer()
 }
@@ -212,6 +225,9 @@ func (UnimplementedMerchantServiceServer) CreatePIC(context.Context, *MerchantPI
 }
 func (UnimplementedMerchantServiceServer) UpdatePIC(context.Context, *MerchantPICRequest) (*ActionMerchantResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdatePIC not implemented")
+}
+func (UnimplementedMerchantServiceServer) DeletePIC(context.Context, *GetMerchantPICByUuidRequest) (*ActionMerchantResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePIC not implemented")
 }
 func (UnimplementedMerchantServiceServer) GetPICByUuid(context.Context, *GetMerchantPICByUuidRequest) (*MerchantPICResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPICByUuid not implemented")
@@ -399,6 +415,24 @@ func _MerchantService_UpdatePIC_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _MerchantService_DeletePIC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMerchantPICByUuidRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MerchantServiceServer).DeletePIC(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: MerchantService_DeletePIC_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MerchantServiceServer).DeletePIC(ctx, req.(*GetMerchantPICByUuidRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _MerchantService_GetPICByUuid_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetMerchantPICByUuidRequest)
 	if err := dec(in); err != nil {
@@ -459,6 +493,10 @@ var MerchantService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdatePIC",
 			Handler:    _MerchantService_UpdatePIC_Handler,
+		},
+		{
+			MethodName: "DeletePIC",
+			Handler:    _MerchantService_DeletePIC_Handler,
 		},
 		{
 			MethodName: "GetPICByUuid",
