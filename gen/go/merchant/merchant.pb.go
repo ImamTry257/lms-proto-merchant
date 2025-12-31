@@ -714,6 +714,7 @@ type MerchantPICRequest struct {
 	OwnerPhoneNumber string                 `protobuf:"bytes,5,opt,name=owner_phone_number,json=ownerPhoneNumber,proto3" json:"owner_phone_number,omitempty"`
 	OwnerEmail       string                 `protobuf:"bytes,6,opt,name=owner_email,json=ownerEmail,proto3" json:"owner_email,omitempty"`
 	OwnerAddress     string                 `protobuf:"bytes,7,opt,name=owner_address,json=ownerAddress,proto3" json:"owner_address,omitempty"`
+	OwnerRoleId      string                 `protobuf:"bytes,8,opt,name=owner_role_id,json=ownerRoleId,proto3" json:"owner_role_id,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -793,6 +794,13 @@ func (x *MerchantPICRequest) GetOwnerEmail() string {
 func (x *MerchantPICRequest) GetOwnerAddress() string {
 	if x != nil {
 		return x.OwnerAddress
+	}
+	return ""
+}
+
+func (x *MerchantPICRequest) GetOwnerRoleId() string {
+	if x != nil {
+		return x.OwnerRoleId
 	}
 	return ""
 }
@@ -962,7 +970,7 @@ const file_merchant_proto_rawDesc = "" +
 	"\n" +
 	"is_success\x18\x01 \x01(\bR\tisSuccess\".\n" +
 	"\x1bGetMerchantPICByUuidRequest\x12\x0f\n" +
-	"\x03id_\x18\x01 \x01(\tR\x02id\"\xec\x01\n" +
+	"\x03id_\x18\x01 \x01(\tR\x02id\"\x90\x02\n" +
 	"\x12MerchantPICRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04uuid\x18\x02 \x01(\tR\x04uuid\x12\x1f\n" +
@@ -973,7 +981,8 @@ const file_merchant_proto_rawDesc = "" +
 	"\x12owner_phone_number\x18\x05 \x01(\tR\x10ownerPhoneNumber\x12\x1f\n" +
 	"\vowner_email\x18\x06 \x01(\tR\n" +
 	"ownerEmail\x12#\n" +
-	"\rowner_address\x18\a \x01(\tR\fownerAddress\"\xa8\x02\n" +
+	"\rowner_address\x18\a \x01(\tR\fownerAddress\x12\"\n" +
+	"\rowner_role_id\x18\b \x01(\tR\vownerRoleId\"\xa8\x02\n" +
 	"\x13MerchantPICResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04uuid\x18\x02 \x01(\tR\x04uuid\x12\x1f\n" +

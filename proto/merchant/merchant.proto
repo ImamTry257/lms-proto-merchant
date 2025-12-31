@@ -86,6 +86,7 @@ message MerchantPICRequest {
     string owner_phone_number = 5;
     string owner_email = 6;
     string owner_address = 7;
+    string owner_role_id = 8;
 }
 
 message MerchantPICResponse {
