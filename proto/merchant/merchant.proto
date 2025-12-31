@@ -36,6 +36,7 @@ message MerchantRequest {
     string owner_phone_number = 10;
     string owner_email = 11;
     string owner_address = 12;
+    string owner_role_id = 13;
 }
 
 message MerchantResponse {
