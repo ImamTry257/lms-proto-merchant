@@ -99,6 +99,18 @@ message MerchantPICResponse {
     google.protobuf.Timestamp created_at = 8;
 }
 
+message ListMerchantPICRequest {
+    string merchant_id = 1;
+    int32 page = 2;
+    int32 size = 3;
+    string search = 4;
+    string status = 5;
+}
+
+message ListMerchantPICResponse {
+    repeated MerchantPICResponse data = 1;
+}
+
 service MerchantService {
     // Merchant
     rpc GetAll(ListMerchantRequest) returns (ListMerchantResponse);
@@ -110,6 +122,7 @@ service MerchantService {
     rpc Delete(GetMerchantByUuidRequest) returns (ActionMerchantResponse);
 
     // Merchant PIC
+    rpc GetAllPIC(ListMerchantPICRequest) returns (ListMerchantPICResponse);
     rpc CreatePIC(MerchantPICRequest) returns (ActionMerchantResponse);
     rpc UpdatePIC(MerchantPICRequest) returns (ActionMerchantResponse);
     rpc DeletePIC(GetMerchantPICByUuidRequest) returns (ActionMerchantResponse);
