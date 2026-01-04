@@ -992,6 +992,10 @@ func (x *ListMerchantPICRequest) GetStatus() string {
 type ListMerchantPICResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Data          []*MerchantPICResponse `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
+	Page          int32                  `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
+	Size          int32                  `protobuf:"varint,3,opt,name=size,proto3" json:"size,omitempty"`
+	TotalItems    int32                  `protobuf:"varint,4,opt,name=total_items,json=totalItems,proto3" json:"total_items,omitempty"`
+	TotalPages    int32                  `protobuf:"varint,5,opt,name=total_pages,json=totalPages,proto3" json:"total_pages,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1031,6 +1035,34 @@ func (x *ListMerchantPICResponse) GetData() []*MerchantPICResponse {
 		return x.Data
 	}
 	return nil
+}
+
+func (x *ListMerchantPICResponse) GetPage() int32 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *ListMerchantPICResponse) GetSize() int32 {
+	if x != nil {
+		return x.Size
+	}
+	return 0
+}
+
+func (x *ListMerchantPICResponse) GetTotalItems() int32 {
+	if x != nil {
+		return x.TotalItems
+	}
+	return 0
+}
+
+func (x *ListMerchantPICResponse) GetTotalPages() int32 {
+	if x != nil {
+		return x.TotalPages
+	}
+	return 0
 }
 
 var File_merchant_proto protoreflect.FileDescriptor
@@ -1131,9 +1163,15 @@ const file_merchant_proto_rawDesc = "" +
 	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x12\n" +
 	"\x04size\x18\x03 \x01(\x05R\x04size\x12\x16\n" +
 	"\x06search\x18\x04 \x01(\tR\x06search\x12\x16\n" +
-	"\x06status\x18\x05 \x01(\tR\x06status\"O\n" +
+	"\x06status\x18\x05 \x01(\tR\x06status\"\xb9\x01\n" +
 	"\x17ListMerchantPICResponse\x124\n" +
-	"\x04data\x18\x01 \x03(\v2 .merchant.v2.MerchantPICResponseR\x04data2\x87\b\n" +
+	"\x04data\x18\x01 \x03(\v2 .merchant.v2.MerchantPICResponseR\x04data\x12\x12\n" +
+	"\x04page\x18\x02 \x01(\x05R\x04page\x12\x12\n" +
+	"\x04size\x18\x03 \x01(\x05R\x04size\x12\x1f\n" +
+	"\vtotal_items\x18\x04 \x01(\x05R\n" +
+	"totalItems\x12\x1f\n" +
+	"\vtotal_pages\x18\x05 \x01(\x05R\n" +
+	"totalPages2\x87\b\n" +
 	"\x0fMerchantService\x12M\n" +
 	"\x06GetAll\x12 .merchant.v2.ListMerchantRequest\x1a!.merchant.v2.ListMerchantResponse\x12]\n" +
 	"\x12GetAllMerchantName\x12 .merchant.v2.ListMerchantRequest\x1a%.merchant.v2.ListMerchantNameResponse\x12K\n" +

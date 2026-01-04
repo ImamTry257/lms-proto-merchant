@@ -111,6 +111,10 @@ message ListMerchantPICRequest {
 
 message ListMerchantPICResponse {
     repeated MerchantPICResponse data = 1;
+    int32 page = 2;
+    int32 size = 3;
+    int32 total_items = 4;
+    int32 total_pages = 5;
 }
 
 service MerchantService {
