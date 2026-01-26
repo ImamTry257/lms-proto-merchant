@@ -98,7 +98,8 @@ message MerchantPICResponse {
     string owner_phone_number = 5;
     string owner_email = 6;
     string owner_address = 7;
-    google.protobuf.Timestamp created_at = 8;
+    int32 is_active = 8;
+    google.protobuf.Timestamp created_at = 9;
 }
 
 message ListMerchantPICRequest {

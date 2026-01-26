@@ -822,7 +822,8 @@ type MerchantPICResponse struct {
 	OwnerPhoneNumber string                 `protobuf:"bytes,5,opt,name=owner_phone_number,json=ownerPhoneNumber,proto3" json:"owner_phone_number,omitempty"`
 	OwnerEmail       string                 `protobuf:"bytes,6,opt,name=owner_email,json=ownerEmail,proto3" json:"owner_email,omitempty"`
 	OwnerAddress     string                 `protobuf:"bytes,7,opt,name=owner_address,json=ownerAddress,proto3" json:"owner_address,omitempty"`
-	CreatedAt        *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	IsActive         int32                  `protobuf:"varint,8,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
+	CreatedAt        *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -904,6 +905,13 @@ func (x *MerchantPICResponse) GetOwnerAddress() string {
 		return x.OwnerAddress
 	}
 	return ""
+}
+
+func (x *MerchantPICResponse) GetIsActive() int32 {
+	if x != nil {
+		return x.IsActive
+	}
+	return 0
 }
 
 func (x *MerchantPICResponse) GetCreatedAt() *timestamppb.Timestamp {
@@ -1143,7 +1151,7 @@ const file_merchant_proto_rawDesc = "" +
 	"\vowner_email\x18\x06 \x01(\tR\n" +
 	"ownerEmail\x12#\n" +
 	"\rowner_address\x18\a \x01(\tR\fownerAddress\x12\"\n" +
-	"\rowner_role_id\x18\b \x01(\tR\vownerRoleId\"\xa8\x02\n" +
+	"\rowner_role_id\x18\b \x01(\tR\vownerRoleId\"\xc5\x02\n" +
 	"\x13MerchantPICResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04uuid\x18\x02 \x01(\tR\x04uuid\x12\x1f\n" +
@@ -1154,9 +1162,10 @@ const file_merchant_proto_rawDesc = "" +
 	"\x12owner_phone_number\x18\x05 \x01(\tR\x10ownerPhoneNumber\x12\x1f\n" +
 	"\vowner_email\x18\x06 \x01(\tR\n" +
 	"ownerEmail\x12#\n" +
-	"\rowner_address\x18\a \x01(\tR\fownerAddress\x129\n" +
+	"\rowner_address\x18\a \x01(\tR\fownerAddress\x12\x1b\n" +
+	"\tis_active\x18\b \x01(\x05R\bisActive\x129\n" +
 	"\n" +
-	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\x91\x01\n" +
+	"created_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\x91\x01\n" +
 	"\x16ListMerchantPICRequest\x12\x1f\n" +
 	"\vmerchant_id\x18\x01 \x01(\tR\n" +
 	"merchantId\x12\x12\n" +
