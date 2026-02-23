@@ -322,21 +322,17 @@ func (x *MerchantRequest) GetOwnerRoleId() string {
 }
 
 type MerchantResponse struct {
-	state            protoimpl.MessageState `protogen:"open.v1"`
-	Uuid             string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Name             string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Code             string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
-	Slug             string                 `protobuf:"bytes,4,opt,name=slug,proto3" json:"slug,omitempty"`
-	Address          string                 `protobuf:"bytes,5,opt,name=address,proto3" json:"address,omitempty"`
-	IsActive         int32                  `protobuf:"varint,6,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
-	CreatedAt        *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Id               int32                  `protobuf:"varint,8,opt,name=id,proto3" json:"id,omitempty"`
-	OwnerName        string                 `protobuf:"bytes,9,opt,name=owner_name,json=ownerName,proto3" json:"owner_name,omitempty"`
-	OwnerPhoneNumber string                 `protobuf:"bytes,10,opt,name=owner_phone_number,json=ownerPhoneNumber,proto3" json:"owner_phone_number,omitempty"`
-	OwnerEmail       string                 `protobuf:"bytes,11,opt,name=owner_email,json=ownerEmail,proto3" json:"owner_email,omitempty"`
-	OwnerAddress     string                 `protobuf:"bytes,12,opt,name=owner_address,json=ownerAddress,proto3" json:"owner_address,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Code          string                 `protobuf:"bytes,3,opt,name=code,proto3" json:"code,omitempty"`
+	Slug          string                 `protobuf:"bytes,4,opt,name=slug,proto3" json:"slug,omitempty"`
+	Address       string                 `protobuf:"bytes,5,opt,name=address,proto3" json:"address,omitempty"`
+	IsActive      int32                  `protobuf:"varint,6,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Data          []*MerchantPICResponse `protobuf:"bytes,8,rep,name=data,proto3" json:"data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *MerchantResponse) Reset() {
@@ -418,39 +414,11 @@ func (x *MerchantResponse) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *MerchantResponse) GetId() int32 {
+func (x *MerchantResponse) GetData() []*MerchantPICResponse {
 	if x != nil {
-		return x.Id
+		return x.Data
 	}
-	return 0
-}
-
-func (x *MerchantResponse) GetOwnerName() string {
-	if x != nil {
-		return x.OwnerName
-	}
-	return ""
-}
-
-func (x *MerchantResponse) GetOwnerPhoneNumber() string {
-	if x != nil {
-		return x.OwnerPhoneNumber
-	}
-	return ""
-}
-
-func (x *MerchantResponse) GetOwnerEmail() string {
-	if x != nil {
-		return x.OwnerEmail
-	}
-	return ""
-}
-
-func (x *MerchantResponse) GetOwnerAddress() string {
-	if x != nil {
-		return x.OwnerAddress
-	}
-	return ""
+	return nil
 }
 
 type MerchantNameResponse struct {
@@ -1104,7 +1072,7 @@ const file_merchant_proto_rawDesc = "" +
 	"\vowner_email\x18\v \x01(\tR\n" +
 	"ownerEmail\x12#\n" +
 	"\rowner_address\x18\f \x01(\tR\fownerAddress\x12\"\n" +
-	"\rowner_role_id\x18\r \x01(\tR\vownerRoleId\"\xf7\x02\n" +
+	"\rowner_role_id\x18\r \x01(\tR\vownerRoleId\"\x8a\x02\n" +
 	"\x10MerchantResponse\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
@@ -1113,15 +1081,8 @@ const file_merchant_proto_rawDesc = "" +
 	"\aaddress\x18\x05 \x01(\tR\aaddress\x12\x1b\n" +
 	"\tis_active\x18\x06 \x01(\x05R\bisActive\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12\x0e\n" +
-	"\x02id\x18\b \x01(\x05R\x02id\x12\x1d\n" +
-	"\n" +
-	"owner_name\x18\t \x01(\tR\townerName\x12,\n" +
-	"\x12owner_phone_number\x18\n" +
-	" \x01(\tR\x10ownerPhoneNumber\x12\x1f\n" +
-	"\vowner_email\x18\v \x01(\tR\n" +
-	"ownerEmail\x12#\n" +
-	"\rowner_address\x18\f \x01(\tR\fownerAddress\">\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x124\n" +
+	"\x04data\x18\b \x03(\v2 .merchant.v2.MerchantPICResponseR\x04data\">\n" +
 	"\x14MerchantNameResponse\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\"Q\n" +
@@ -1228,39 +1189,40 @@ var file_merchant_proto_goTypes = []any{
 var file_merchant_proto_depIdxs = []int32{
 	14, // 0: merchant.v2.MerchantRequest.created_at:type_name -> google.protobuf.Timestamp
 	14, // 1: merchant.v2.MerchantResponse.created_at:type_name -> google.protobuf.Timestamp
-	5,  // 2: merchant.v2.ListMerchantNameResponse.data:type_name -> merchant.v2.MerchantNameResponse
-	4,  // 3: merchant.v2.ListMerchantResponse.data:type_name -> merchant.v2.MerchantResponse
-	14, // 4: merchant.v2.MerchantPICResponse.created_at:type_name -> google.protobuf.Timestamp
-	11, // 5: merchant.v2.ListMerchantPICResponse.data:type_name -> merchant.v2.MerchantPICResponse
-	0,  // 6: merchant.v2.MerchantService.GetAll:input_type -> merchant.v2.ListMerchantRequest
-	0,  // 7: merchant.v2.MerchantService.GetAllMerchantName:input_type -> merchant.v2.ListMerchantRequest
-	3,  // 8: merchant.v2.MerchantService.Create:input_type -> merchant.v2.MerchantRequest
-	3,  // 9: merchant.v2.MerchantService.Update:input_type -> merchant.v2.MerchantRequest
-	1,  // 10: merchant.v2.MerchantService.GetById:input_type -> merchant.v2.GetMerchantByIdRequest
-	2,  // 11: merchant.v2.MerchantService.GetByUuid:input_type -> merchant.v2.GetMerchantByUuidRequest
-	2,  // 12: merchant.v2.MerchantService.Delete:input_type -> merchant.v2.GetMerchantByUuidRequest
-	12, // 13: merchant.v2.MerchantService.GetAllPIC:input_type -> merchant.v2.ListMerchantPICRequest
-	10, // 14: merchant.v2.MerchantService.CreatePIC:input_type -> merchant.v2.MerchantPICRequest
-	10, // 15: merchant.v2.MerchantService.UpdatePIC:input_type -> merchant.v2.MerchantPICRequest
-	9,  // 16: merchant.v2.MerchantService.DeletePIC:input_type -> merchant.v2.GetMerchantPICByUuidRequest
-	9,  // 17: merchant.v2.MerchantService.GetPICByUuid:input_type -> merchant.v2.GetMerchantPICByUuidRequest
-	7,  // 18: merchant.v2.MerchantService.GetAll:output_type -> merchant.v2.ListMerchantResponse
-	6,  // 19: merchant.v2.MerchantService.GetAllMerchantName:output_type -> merchant.v2.ListMerchantNameResponse
-	8,  // 20: merchant.v2.MerchantService.Create:output_type -> merchant.v2.ActionMerchantResponse
-	8,  // 21: merchant.v2.MerchantService.Update:output_type -> merchant.v2.ActionMerchantResponse
-	4,  // 22: merchant.v2.MerchantService.GetById:output_type -> merchant.v2.MerchantResponse
-	4,  // 23: merchant.v2.MerchantService.GetByUuid:output_type -> merchant.v2.MerchantResponse
-	8,  // 24: merchant.v2.MerchantService.Delete:output_type -> merchant.v2.ActionMerchantResponse
-	13, // 25: merchant.v2.MerchantService.GetAllPIC:output_type -> merchant.v2.ListMerchantPICResponse
-	8,  // 26: merchant.v2.MerchantService.CreatePIC:output_type -> merchant.v2.ActionMerchantResponse
-	8,  // 27: merchant.v2.MerchantService.UpdatePIC:output_type -> merchant.v2.ActionMerchantResponse
-	8,  // 28: merchant.v2.MerchantService.DeletePIC:output_type -> merchant.v2.ActionMerchantResponse
-	11, // 29: merchant.v2.MerchantService.GetPICByUuid:output_type -> merchant.v2.MerchantPICResponse
-	18, // [18:30] is the sub-list for method output_type
-	6,  // [6:18] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	11, // 2: merchant.v2.MerchantResponse.data:type_name -> merchant.v2.MerchantPICResponse
+	5,  // 3: merchant.v2.ListMerchantNameResponse.data:type_name -> merchant.v2.MerchantNameResponse
+	4,  // 4: merchant.v2.ListMerchantResponse.data:type_name -> merchant.v2.MerchantResponse
+	14, // 5: merchant.v2.MerchantPICResponse.created_at:type_name -> google.protobuf.Timestamp
+	11, // 6: merchant.v2.ListMerchantPICResponse.data:type_name -> merchant.v2.MerchantPICResponse
+	0,  // 7: merchant.v2.MerchantService.GetAll:input_type -> merchant.v2.ListMerchantRequest
+	0,  // 8: merchant.v2.MerchantService.GetAllMerchantName:input_type -> merchant.v2.ListMerchantRequest
+	3,  // 9: merchant.v2.MerchantService.Create:input_type -> merchant.v2.MerchantRequest
+	3,  // 10: merchant.v2.MerchantService.Update:input_type -> merchant.v2.MerchantRequest
+	1,  // 11: merchant.v2.MerchantService.GetById:input_type -> merchant.v2.GetMerchantByIdRequest
+	2,  // 12: merchant.v2.MerchantService.GetByUuid:input_type -> merchant.v2.GetMerchantByUuidRequest
+	2,  // 13: merchant.v2.MerchantService.Delete:input_type -> merchant.v2.GetMerchantByUuidRequest
+	12, // 14: merchant.v2.MerchantService.GetAllPIC:input_type -> merchant.v2.ListMerchantPICRequest
+	10, // 15: merchant.v2.MerchantService.CreatePIC:input_type -> merchant.v2.MerchantPICRequest
+	10, // 16: merchant.v2.MerchantService.UpdatePIC:input_type -> merchant.v2.MerchantPICRequest
+	9,  // 17: merchant.v2.MerchantService.DeletePIC:input_type -> merchant.v2.GetMerchantPICByUuidRequest
+	9,  // 18: merchant.v2.MerchantService.GetPICByUuid:input_type -> merchant.v2.GetMerchantPICByUuidRequest
+	7,  // 19: merchant.v2.MerchantService.GetAll:output_type -> merchant.v2.ListMerchantResponse
+	6,  // 20: merchant.v2.MerchantService.GetAllMerchantName:output_type -> merchant.v2.ListMerchantNameResponse
+	8,  // 21: merchant.v2.MerchantService.Create:output_type -> merchant.v2.ActionMerchantResponse
+	8,  // 22: merchant.v2.MerchantService.Update:output_type -> merchant.v2.ActionMerchantResponse
+	4,  // 23: merchant.v2.MerchantService.GetById:output_type -> merchant.v2.MerchantResponse
+	4,  // 24: merchant.v2.MerchantService.GetByUuid:output_type -> merchant.v2.MerchantResponse
+	8,  // 25: merchant.v2.MerchantService.Delete:output_type -> merchant.v2.ActionMerchantResponse
+	13, // 26: merchant.v2.MerchantService.GetAllPIC:output_type -> merchant.v2.ListMerchantPICResponse
+	8,  // 27: merchant.v2.MerchantService.CreatePIC:output_type -> merchant.v2.ActionMerchantResponse
+	8,  // 28: merchant.v2.MerchantService.UpdatePIC:output_type -> merchant.v2.ActionMerchantResponse
+	8,  // 29: merchant.v2.MerchantService.DeletePIC:output_type -> merchant.v2.ActionMerchantResponse
+	11, // 30: merchant.v2.MerchantService.GetPICByUuid:output_type -> merchant.v2.MerchantPICResponse
+	19, // [19:31] is the sub-list for method output_type
+	7,  // [7:19] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_merchant_proto_init() }
