@@ -330,7 +330,7 @@ type MerchantResponse struct {
 	Address       string                 `protobuf:"bytes,5,opt,name=address,proto3" json:"address,omitempty"`
 	IsActive      int32                  `protobuf:"varint,6,opt,name=is_active,json=isActive,proto3" json:"is_active,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	Data          []*MerchantPICResponse `protobuf:"bytes,8,rep,name=data,proto3" json:"data,omitempty"`
+	MerchantPic   []*MerchantPICResponse `protobuf:"bytes,8,rep,name=merchant_pic,json=merchantPic,proto3" json:"merchant_pic,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -414,9 +414,9 @@ func (x *MerchantResponse) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *MerchantResponse) GetData() []*MerchantPICResponse {
+func (x *MerchantResponse) GetMerchantPic() []*MerchantPICResponse {
 	if x != nil {
-		return x.Data
+		return x.MerchantPic
 	}
 	return nil
 }
@@ -1072,7 +1072,7 @@ const file_merchant_proto_rawDesc = "" +
 	"\vowner_email\x18\v \x01(\tR\n" +
 	"ownerEmail\x12#\n" +
 	"\rowner_address\x18\f \x01(\tR\fownerAddress\x12\"\n" +
-	"\rowner_role_id\x18\r \x01(\tR\vownerRoleId\"\x8a\x02\n" +
+	"\rowner_role_id\x18\r \x01(\tR\vownerRoleId\"\x99\x02\n" +
 	"\x10MerchantResponse\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
@@ -1081,8 +1081,8 @@ const file_merchant_proto_rawDesc = "" +
 	"\aaddress\x18\x05 \x01(\tR\aaddress\x12\x1b\n" +
 	"\tis_active\x18\x06 \x01(\x05R\bisActive\x129\n" +
 	"\n" +
-	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x124\n" +
-	"\x04data\x18\b \x03(\v2 .merchant.v2.MerchantPICResponseR\x04data\">\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12C\n" +
+	"\fmerchant_pic\x18\b \x03(\v2 .merchant.v2.MerchantPICResponseR\vmerchantPic\">\n" +
 	"\x14MerchantNameResponse\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\"Q\n" +
@@ -1189,7 +1189,7 @@ var file_merchant_proto_goTypes = []any{
 var file_merchant_proto_depIdxs = []int32{
 	14, // 0: merchant.v2.MerchantRequest.created_at:type_name -> google.protobuf.Timestamp
 	14, // 1: merchant.v2.MerchantResponse.created_at:type_name -> google.protobuf.Timestamp
-	11, // 2: merchant.v2.MerchantResponse.data:type_name -> merchant.v2.MerchantPICResponse
+	11, // 2: merchant.v2.MerchantResponse.merchant_pic:type_name -> merchant.v2.MerchantPICResponse
 	5,  // 3: merchant.v2.ListMerchantNameResponse.data:type_name -> merchant.v2.MerchantNameResponse
 	4,  // 4: merchant.v2.ListMerchantResponse.data:type_name -> merchant.v2.MerchantResponse
 	14, // 5: merchant.v2.MerchantPICResponse.created_at:type_name -> google.protobuf.Timestamp
